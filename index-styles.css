@@ -1,126 +1,138 @@
 :root {
-  --background: #ecf0f1;
-  --primary-text: #2c3e50;
-  --accent: #8e44ad;
-  --secondary: #bdc3c7;
+    --background: #ecf0f1;
+    --primary-text: #2c3e50;
+    --accent: #8e44ad;
+    --secondary: #bdc3c7;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: var(--background);
-  color: var(--primary-text);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--primary-text);
 }
 
 .intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .intro.hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 .about {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  max-width: 800px;
-  margin: 8rem auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    max-width: 800px;
+    margin: 8rem auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .about h2 {
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
 }
 
 .about p {
-  font-size: 1.25rem;
-  line-height: 1.75;
-  color: var(--primary-text);
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: var(--primary-text);
 }
 
 .about.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tech-stack {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-  gap: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 2rem;
 }
 
 .tech-category {
-  text-align: center;
-  flex: 1 1 250px;
-  max-width: 300px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 300px;
 }
 
 .category-icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 2rem;
+    border: 2px solid var(--accent);
 }
 
 .tech-category h3 {
-  font-size: 1.5rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
 }
 
 .tech-logos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.tech-logos img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+.tech-logos i {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    opacity: 0;
+    transform: scale(1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: default;
 }
 
-.tech-logos img:hover {
-  transform: scale(1.2);
+.tech-logos i:hover {
+    transform: scale(1.2);
+    color: var(--accent);
+}
+
+.tech-logos i.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .tech-logos i {
+        color: #f0f0f0;
+    }
 }
 
 .intro-photo {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 6px solid var(--accent);
-  margin-bottom: 1.5rem;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 6px solid var(--accent);
+    margin-bottom: 1.5rem;
 }
 
 .intro-name {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0.5rem 0;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
 }
 
 .intro-position {
-  font-size: 1.75rem;
-  color: var(--accent);
+    font-size: 1.75rem;
+    color: var(--accent);
 }
-
