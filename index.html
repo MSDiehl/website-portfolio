@@ -17,7 +17,7 @@
     <section class="about">
         <h2>About Me</h2>
         <p>
-            One Piece filler episodes are better than Frieren
+            I am a young motivated full stack developer with a passion for creating dynamic and responsive web applications. I have experience in both frontend and backend technologies, and I am always eager to learn new skills and improve my craft.
         </p>
         <div class="tech-stack">
             <div class="tech-category">
@@ -89,17 +89,143 @@
     </section>
     <div class="spacer"></div>
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>If you would like to get in touch, please fill out the form below or connect with me on linkedIn.</p>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <div class="contact-shell">
+            <header class="contact-header">
+                <h2>Let’s connect</h2>
+                <p>
+                    Want to collaborate, talk about a role, or just say hi? Send a message below and I’ll get back to you.
+                </p>
+            </header>
+
+            <div class="contact-grid">
+                <aside class="contact-card contact-info" aria-label="Contact info">
+                    <h3>Quick options</h3>
+
+                    <div class="contact-actions">
+                        <a class="btn btn-primary" id="email-me" href="mailto:your@email.com?subject=Portfolio%20Inquiry">
+                            <i class="fa-solid fa-envelope"></i>
+                            Email me
+                        </a>
+                        <button class="btn btn-ghost" type="button" id="copy-email" data-email="your@email.com">
+                            <i class="fa-regular fa-copy"></i>
+                            Copy email
+                        </button>
+                        <a class="btn btn-ghost" href="#projects">
+                            <i class="fa-solid fa-folder-open"></i>
+                            View projects
+                        </a>
+                    </div>
+
+                    <ul class="contact-badges" aria-label="Availability">
+                        <li><i class="fa-solid fa-bolt"></i> Usually replies within 24–48 hours</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Open to remote opportunities</li>
+                        <li><i class="fa-solid fa-shield"></i> No spam—messages are validated</li>
+                    </ul>
+
+                    <div class="social-links" aria-label="Social links">
+                        <a class="social" href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a class="social" href="#" target="_blank" rel="noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a class="social" href="#" target="_blank" rel="noreferrer" aria-label="Resume">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                        </a>
+                    </div>
+                </aside>
+
+                <div class="contact-card contact-form" aria-label="Contact form">
+                    <form id="contact-form" novalidate>
+                        <input type="text" name="company" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                        <div class="form-row">
+                            <label class="field">
+                                <span class="field-label">Reason</span>
+                                <select name="reason" id="reason" required>
+                                    <option value="" selected disabled>Select one…</option>
+                                    <option value="role">Job opportunity</option>
+                                    <option value="freelance">Freelance / contract</option>
+                                    <option value="collab">Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Timeline</span>
+                                <select name="timeline" id="timeline" required>
+                                    <option value="" selected disabled>When?</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="weeks">Next few weeks</option>
+                                    <option value="months">Next few months</option>
+                                    <option value="unsure">Not sure</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="field">
+                                <span class="field-label">Name</span>
+                                <input type="text" name="name" id="name" placeholder="Your name" autocomplete="name" required />
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Email</span>
+                                <input type="email" name="email" id="email" placeholder="you@company.com" autocomplete="email" required />
+                            </label>
+                        </div>
+
+                        <label class="field">
+                            <span class="field-label">Subject</span>
+                            <input type="text" name="subject" id="subject" placeholder="Quick summary (optional)" maxlength="80" />
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Message</span>
+                            <textarea name="message" id="message" rows="6" placeholder="Tell me what you’re working on…" maxlength="1200" required></textarea>
+                            <span class="field-help">
+                                <span id="message-count">0</span>/1200
+                            </span>
+                        </label>
+
+                        <div class="form-row form-row-tight">
+                            <div class="field">
+                                <span class="field-label">Preferred contact</span>
+                                <div class="segmented" role="group" aria-label="Preferred contact method">
+                                    <label class="seg"><input type="radio" name="pref" value="email" checked /> Email</label>
+                                    <label class="seg"><input type="radio" name="pref" value="linkedin" /> LinkedIn</label>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <span class="field-label">Budget (optional)</span>
+                                <div class="range-wrap">
+                                    <input type="range" name="budget" id="budget" min="0" max="5" step="1" value="0" />
+                                    <span class="range-label" id="budget-label">Not sure</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="send-btn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Send
+                            </button>
+                            <button type="button" class="btn btn-ghost" id="clear-draft">
+                                <i class="fa-solid fa-eraser"></i>
+                                Clear
+                            </button>
+                        </div>
+
+                        <p class="form-note">
+                            This form opens your email client with a pre-filled message. If it doesn’t open,
+                            use the “Email me” button on the left.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
         </div>
     </section>
 
