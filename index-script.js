@@ -16,6 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
         intro.style.transform = "translateY(0)";
     });
 
+    // -------------------------
+    // Intro role rotator (robust)
+    // -------------------------
+    const roles = Array.from(document.querySelectorAll(".role"));
+
+    if (roles.length) {
+        // Ensure one role is active on load (prevents "blank" state)
+        let roleIndex = roles.findIndex(r => r.classList.contains("active"));
+        if (roleIndex < 0) {
+            roleIndex = 0;
+            roles[0].classList.add("active");
+        }
+
+        // Only rotate if there are multiple roles
+        if (roles.length > 1) {
+            setInterval(() => {
+            roles[roleIndex].classList.remove("active");
+            roleIndex = (roleIndex + 1) % roles.length;
+            roles[roleIndex].classList.add("active");
+            }, 2600);
+        }
+    }
+
     function handleScroll() {
         const scrollY = window.scrollY;
         const aboutTop = about.getBoundingClientRect().top;
@@ -53,8 +76,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     learnMoreButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const details = button.nextElementSibling;
-            details.classList.toggle("expanded");
+            const card = button.closest(".project-card");
+            const details = card?.querySelector(".project-details");
+            if (!details) return;
+
+            const isOpen = !details.hasAttribute("hidden");
+
+            if (isOpen) {
+                details.setAttribute("hidden", "");
+                button.setAttribute("aria-expanded", "false");
+                button.innerHTML = `<i class="fa-solid fa-circle-info"></i> Learn more`;
+            } else {
+                details.removeAttribute("hidden");
+                button.setAttribute("aria-expanded", "true");
+                button.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Close`;
+            }
         });
     });
 
@@ -100,8 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const nx = (startX - 50) / 50; // -1..1
             const ny = (startY - 50) / 50; // -1..1
 
-            const x = nx * bounds.safeRadius * 0.60;
-            const y = ny * bounds.safeRadius * 0.60;
+            const x = nx * bounds.safeRadius * 0.94;
+            const y = ny * bounds.safeRadius * 0.94;
 
             const s = {
                 el,
@@ -187,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // ---------- Tunables (speed + feel) ----------
             const steer = 0.34;            // slightly faster drift than before
-            const targetStep = 60;         // how far targets move each change (px)
+            const targetStep = 140;       // how far targets move each change (px)
             const restitution = 0.88;      // bounce (0.0 = no bounce, 1.0 = perfectly elastic)
             const sepSlop = 0.5;           // helps prevent micro-jitter when barely touching
 
@@ -201,13 +237,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     s.tx = clamp(
                         s.x + rand(-targetStep, targetStep),
-                        -bounds.safeRadius * 0.75,
-                        bounds.safeRadius * 0.75
+                        -bounds.safeRadius * 1.00,
+                        bounds.safeRadius * 1.00
                     );
                     s.ty = clamp(
                         s.y + rand(-targetStep, targetStep),
-                        -bounds.safeRadius * 0.75,
-                        bounds.safeRadius * 0.75
+                        -bounds.safeRadius * 1.00,
+                        bounds.safeRadius * 1.00
                     );
                 }
 
@@ -306,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // 3) Keep inside the big bubble boundary (soft)
-            const limit = bounds.safeRadius * 0.78;
+            const limit = bounds.safeRadius * 1;
 
             for (const s of state) {
                 const dist = Math.hypot(s.x, s.y);

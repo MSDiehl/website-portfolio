@@ -9,9 +9,21 @@
 </head>
 <body>
     <section class="intro">
-        <img src="your-photo.jpg" alt="Your Photo" class="intro-photo" />
+        <div class="intro-avatar">
+            <img src="your-photo.jpg" alt="Your Photo" class="intro-photo" />
+            <span class="avatar-ring"></span>
+        </div>
         <h1 class="intro-name">Malachi Diehl</h1>
-        <p class="intro-position">Full Stack Developer</p>
+        <p class="intro-roles">
+            <span class="role active">Full Stack Developer</span>
+            <span class="role">Frontend Engineer</span>
+            <span class="role">Backend Engineer</span>
+            <span class="role">Problem Solver</span>
+        </p>
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
     </section>
     <div class="spacer"></div>
     <section class="about">
@@ -59,38 +71,87 @@
     </section>
     <div class="spacer"></div>
     <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="" alt="Project Screenshot">
-                <h3>Commerce Bank Project</h3>
+        <div class="projects-shell">
+            <header class="projects-header">
+                <h2>Projects</h2>
                 <p>
-                    A web application built for Commerce Bank featuring a functional login page. Each user could access data from various domains via APIs, with unique tables storing their individual data securely.
+                    A curated list of projects I’m proud of—focused on real-world impact, clean UX, and solid engineering.
                 </p>
-                <div class="project-links">
-                    <a href="#" target="_blank">Live Demo</a>
-                    <a href="#" target="_blank">GitHub</a>
-                </div>
-                <button class="learn-more">Learn More</button>
-                <div class="project-details">
-                    <h4>Additional Screenshots</h4>
-                    <div class="detail-images">
-                        <img src="" alt="Screenshot 1">
-                        <img src="" alt="Screenshot 2">
+            </header>
+            <div class="project-list">
+                <!-- Project Card -->
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-thumb" aria-label="Project screenshot">
+                            <!-- swap this div for an <img> like:
+                            <img src="..." alt="Commerce Bank project screenshot" />
+                            -->
+                            <span class="thumb-label">
+                                <i class="fa-regular fa-image"></i>
+                                Project Screenshot
+                            </span>
+                        </div>
+                        <div class="project-meta">
+                            <h3>Commerce Bank Project</h3>
+                            <p>
+                                A web application built for Commerce Bank featuring a functional login page. Each user could access data
+                                from various domains via APIs, with unique tables storing their individual data securely.
+                            </p>
+                            <div class="project-tags" aria-label="Tech stack tags">
+                                <span class="tag"><i class="fa-brands fa-html5"></i> HTML</span>
+                                <span class="tag"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                                <span class="tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                                <span class="tag"><i class="fa-brands fa-react"></i> React</span>
+                                <span class="tag"><i class="fa-brands fa-node-js"></i> Node</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    Live Demo
+                                </a>
+                                <a class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-github"></i>
+                                    GitHub
+                                </a>
+                                <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Learn more
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Tech Stack</h4>
-                    <div class="tech-icons">
-                        <i class="fab fa-html5" title="HTML5"></i>
-                        <i class="fab fa-css3-alt" title="CSS3"></i>
-                        <i class="fab fa-js-square" title="JavaScript"></i>
-                        <i class="fab fa-react" title="React"></i>
-                        <i class="fab fa-node-js" title="Node.js"></i>
+                    <div class="project-details" hidden>
+                        <div class="details-grid">
+                            <div class="details-block">
+                                <h4>Highlights</h4>
+                                <ul>
+                                    <li>Secure auth flow and role-based access</li>
+                                    <li>API-driven data views across multiple domains</li>
+                                    <li>Per-user data isolation with unique tables</li>
+                                </ul>
+                            </div>
+                            <div class="details-block">
+                                <h4>More screenshots</h4>
+                                <div class="detail-images">
+                                    <div class="detail-img">Screenshot 1</div>
+                                    <div class="detail-img">Screenshot 2</div>
+                                </div>
+                                <!-- If you have images, replace the divs with <img src="..." alt="..."> -->
+                            </div>
+                        </div>
+                        <div class="details-links">
+                            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+                                <i class="fa-solid fa-globe"></i>
+                                Visit Live Site
+                            </a>
+                            <a class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-github"></i>
+                                View Repo
+                            </a>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank">Visit Live Site</a>
-                        <a href="#" target="_blank">View GitHub Repo</a>
-                    </div>
-                </div>
+                </article>
+                <!-- Copy/paste another <article class="project-card">...</article> for each worthy project -->
             </div>
         </div>
     </section>
