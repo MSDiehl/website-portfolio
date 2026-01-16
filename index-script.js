@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const contact = document.querySelector(".contact");
     const techLogos = document.querySelectorAll(".tech-logos i");
     const learnMoreButtons = document.querySelectorAll(".learn-more");
+    
+    const SOCIAL_LINKS = {
+        linkedin: "https://www.linkedin.com/in/malachi-diehl-04b961251/",
+        github: "https://github.com/MSDiehl",
+    };
 
     requestAnimationFrame(() => {
         intro.style.opacity = "1";
@@ -81,6 +86,80 @@ document.addEventListener("DOMContentLoaded", () => {
         toast.classList.add("show");
         window.clearTimeout(showToast._t);
         showToast._t = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    // Basic rate limit (client-side) to reduce bot spam and accidental double-submits.
+    const RATE_KEY = "portfolio_contact_last_submit_v1";
+    const RATE_WINDOW_MS = 15_000;
+
+    function isRateLimited() {
+        try {
+            const last = Number(localStorage.getItem(RATE_KEY) || 0);
+            return Date.now() - last < RATE_WINDOW_MS;
+        } catch {
+            return false;
+        }
+    }
+
+    function markSubmitted() {
+        try {
+            localStorage.setItem(RATE_KEY, String(Date.now()));
+        } catch {
+            // ignore
+        }
+    }
+
+    function getLinkedInUrl() {
+        const link = document.querySelector('.social[aria-label="LinkedIn"]');
+        const href = link?.getAttribute?.('href') || "";
+        return href && href !== "#" ? href : "";
+    }
+
+    function ensureFallbackPanel() {
+        if (!form) return null;
+        let panel = form.querySelector(".contact-fallback");
+        if (panel) return panel;
+
+        const note = form.querySelector(".form-note");
+        panel = document.createElement("div");
+        panel.className = "contact-fallback";
+        panel.innerHTML = `
+            <div class="fallback-head">
+                <strong>Having trouble?</strong>
+                <span class="fallback-sub">Copy the message below and send it manually.</span>
+            </div>
+            <label class="fallback-field">
+                <span class="fallback-label">Message</span>
+                <textarea class="fallback-text" rows="6" readonly></textarea>
+            </label>
+            <div class="fallback-actions">
+                <a class="btn btn-primary fallback-mailto" href="#" target="_self">
+                    <i class="fa-solid fa-envelope"></i>
+                    Open email link
+                </a>
+                <button class="btn btn-ghost fallback-copy" type="button">
+                    <i class="fa-regular fa-copy"></i>
+                    Copy message
+                </button>
+            </div>
+            <div class="fallback-meta"></div>
+        `;
+
+        if (note && note.parentNode) note.parentNode.insertBefore(panel, note.nextSibling);
+        else form.appendChild(panel);
+
+        const copyBtn = panel.querySelector(".fallback-copy");
+        copyBtn?.addEventListener("click", async () => {
+            const text = panel.querySelector(".fallback-text")?.value || "";
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast("Message copied");
+            } catch {
+                showToast("Select + copy the message");
+            }
+        });
+
+        return panel;
     }
 
     function getEmailTo() {
@@ -225,7 +304,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
         const body = bodyLines.join("\n");
-        return `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const mailto = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        return {
+            mailto,
+            emailTo,
+            subject,
+            body,
+            pref,
+            plainText: `To: ${emailTo}\nSubject: ${subject}\n\n${body}`,
+        };
     }
 
     if (copyEmailBtn) copyEmailBtn.addEventListener("click", copyEmail);
@@ -255,6 +343,11 @@ document.addEventListener("DOMContentLoaded", () => {
         form.addEventListener("submit", e => {
             e.preventDefault();
 
+            if (isRateLimited()) {
+                showToast("Please wait a moment before sending again.");
+                return;
+            }
+
             // Honeypot: if filled, silently "succeed".
             const hp = document.getElementById("company");
             if (hp && hp.value) {
@@ -270,11 +363,56 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             sendBtn && (sendBtn.disabled = true);
+
+            const { mailto, plainText, pref } = buildMailto();
+            markSubmitted();
+
+            // Always prepare a fallback panel (helps when mailto is blocked/no mail app).
+            const fallback = ensureFallbackPanel();
+            if (fallback) {
+                const ta = fallback.querySelector(".fallback-text");
+                const link = fallback.querySelector(".fallback-mailto");
+                const meta = fallback.querySelector(".fallback-meta");
+                if (ta) ta.value = plainText;
+                if (link) link.setAttribute("href", mailto);
+                if (meta) {
+                    const li = getLinkedInUrl();
+                    meta.innerHTML = li
+                        ? `Prefer LinkedIn? Open it and paste your message: <a href="${li}" target="_blank" rel="noreferrer">LinkedIn</a>`
+                        : "";
+                }
+                fallback.classList.remove("show");
+            }
+
+            // If they prefer LinkedIn, copy the message and open LinkedIn.
+            if (pref === "linkedin") {
+                const li = getLinkedInUrl();
+                (async () => {
+                    try {
+                        await navigator.clipboard.writeText(plainText);
+                        showToast("Message copied — opening LinkedIn…");
+                    } catch {
+                        showToast("Opening LinkedIn…");
+                    }
+                    if (li) window.open(li, "_blank", "noopener,noreferrer");
+                    else if (fallback) fallback.classList.add("show");
+                    clearDraft();
+                })().finally(() => {
+                    window.setTimeout(() => {
+                        if (sendBtn) sendBtn.disabled = false;
+                    }, 700);
+                });
+                return;
+            }
+
             showToast("Opening your email client…");
 
             try {
-                const mailto = buildMailto();
                 window.location.href = mailto;
+                // If mailto is blocked or no client is configured, show the fallback.
+                window.setTimeout(() => {
+                    fallback?.classList.add("show");
+                }, 900);
                 clearDraft();
             } finally {
                 window.setTimeout(() => {
@@ -283,4 +421,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    document.querySelectorAll(".social[data-link]").forEach(button => {
+        button.addEventListener("click", () => {
+            const key = button.dataset.link;
+            const url = SOCIAL_LINKS[key];
+
+            if (!url) {
+            console.warn(`No URL configured for ${key}`);
+            return;
+            }
+
+            window.open(url, "_blank", "noopener");
+        });
+    });
 });

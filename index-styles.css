@@ -440,23 +440,41 @@ body {
     margin-top: var(--space-3);
 }
 
+/* Reset native button styles for icon-only buttons */
+.social {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .social {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    color: var(--primary-text);
-    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #fff;
+  font-size: 18px;
+
+  transition: 
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .social:hover {
-    transform: translateY(-2px);
-    background: rgba(142, 68, 173, 0.10);
-    border-color: rgba(142, 68, 173, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.social:focus-visible {
+  outline: 2px solid rgba(148, 92, 255, 0.8);
+  outline-offset: 2px;
 }
 
 .contact-form {
@@ -677,6 +695,78 @@ body {
     font-size: 0.95rem;
 }
 
+/* Contact fallback panel (appears if mailto is blocked / no client configured) */
+.contact-fallback {
+    display: none;
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(142, 68, 173, 0.06);
+}
+
+.contact-fallback.show {
+    display: block;
+}
+
+.fallback-head {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: var(--space-2);
+}
+
+.fallback-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.fallback-field {
+    display: grid;
+    gap: var(--label-gap);
+    margin: 0;
+}
+
+.fallback-label {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.fallback-text {
+    width: 100%;
+    min-height: 140px;
+    padding: 12px var(--control-px);
+    border-radius: var(--control-radius);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-text);
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.fallback-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.fallback-meta {
+    margin-top: var(--space-2);
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.fallback-meta a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.fallback-meta a:hover {
+    text-decoration: underline;
+}
+
 .toast {
     position: fixed;
     bottom: 18px;
@@ -819,6 +909,17 @@ body {
     .field input,
     .field textarea,
     .field select {
+        background: rgba(17, 24, 39, 0.55);
+        border-color: rgba(255, 255, 255, 0.14);
+        color: var(--primary-text);
+    }
+
+    .contact-fallback {
+        background: rgba(142, 68, 173, 0.10);
+        border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .fallback-text {
         background: rgba(17, 24, 39, 0.55);
         border-color: rgba(255, 255, 255, 0.14);
         color: var(--primary-text);
