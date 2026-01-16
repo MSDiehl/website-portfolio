@@ -103,29 +103,24 @@ body {
     opacity: 0;
 }
 
+/* ===============================
+   ABOUT – SINGLE BUBBLE + FLOATING MINI BUBBLES
+   =============================== */
+
+/* Override any older boxed About styles (pre-bubble) */
 .about {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
-    max-width: 800px;
     margin: 8rem auto;
-    padding: 2rem;
-    text-align: center;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.about h2 {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-}
-
-.about p {
-    font-size: 1.25rem;
-    line-height: 1.75;
-    color: var(--primary-text);
+    padding: 0;
+    max-width: none;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+    display: flex;
+    justify-content: center;
 }
 
 .about.visible {
@@ -133,58 +128,167 @@ body {
     transform: translateY(0);
 }
 
-.tech-stack {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 3rem;
-    gap: 2rem;
-}
-
-.tech-category {
-    text-align: center;
-    flex: 1 1 250px;
-    max-width: 300px;
-}
-
-.category-icon {
-    background-color: white;
-    border-radius: 50%;
-    padding: 1rem;
-    font-size: 2rem;
-    border: 2px solid var(--accent);
-}
-
-.tech-category h3 {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-}
-
-.tech-logos {
+.about-shell {
+    width: min(1100px, 92vw);
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
-.tech-logos i {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    opacity: 0;
-    transform: scale(1);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    cursor: default;
+/* BIG parent bubble */
+.about-bubble {
+    width: min(980px, 92vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+
+    padding: clamp(28px, 4vw, 54px);
+    padding-top: clamp(34px, 5vw, 64px);
+
+    background:
+        radial-gradient(900px 600px at 28% 22%, rgba(142, 68, 173, 0.35), transparent 60%),
+        radial-gradient(700px 520px at 78% 62%, rgba(109, 40, 217, 0.22), transparent 62%),
+        radial-gradient(600px 460px at 50% 88%, rgba(20, 184, 166, 0.14), transparent 65%),
+        radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.08), rgba(17, 24, 39, 0.90) 62%);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+        0 50px 120px rgba(0, 0, 0, 0.55),
+        inset 0 0 90px rgba(255, 255, 255, 0.05);
 }
 
-.tech-logos i:hover {
-    transform: scale(1.2);
-    color: var(--accent);
+/* subtle "bubble" rim highlight */
+.about-bubble::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.10), transparent 35%),
+        radial-gradient(circle at 70% 75%, rgba(255, 255, 255, 0.06), transparent 42%);
+    mix-blend-mode: screen;
+    opacity: 0.9;
 }
 
-.tech-logos i.visible {
-    opacity: 1;
-    transform: scale(1);
+.about-header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 60ch;
+    margin: 0 auto;
+}
+
+.about-header h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.3vw, 2.2rem);
+    color: var(--primary-text);
+}
+
+.about-header p {
+    margin: 0.75rem auto 0;
+    line-height: 1.6;
+    color: var(--muted);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
+/* This wraps the mini bubbles */
+.about-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* MINI bubbles */
+.about-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: clamp(150px, 16vw, 190px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.35), rgba(168, 85, 247, 0.55));
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.50),
+        inset 0 0 24px rgba(255, 255, 255, 0.30);
+
+    /* JS controls these */
+    --tx: 0px;
+    --ty: 0px;
+    --s: 1;
+
+    transform: translate(-50%, -50%) translate3d(var(--tx), var(--ty), 0) scale(var(--s));
+    will-change: transform;
+    cursor: pointer;
+
+    transition:
+        filter 180ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+}
+
+.about-card:hover,
+.about-card.is-hover {
+    --s: 1.06;
+    filter: brightness(1.08);
+    border-color: rgba(255, 255, 255, 0.38);
+    box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.60),
+        inset 0 0 28px rgba(255, 255, 255, 0.34);
+}
+
+.about-card:active,
+.about-card.is-boost {
+    --s: 1.10;
+}
+
+.about-card:focus-visible {
+    outline: 2px solid rgba(148, 92, 255, 0.85);
+    outline-offset: 6px;
+}
+
+.about-card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(17, 24, 39, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.about-card-icon i {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.about-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.about-logos {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.about-logos i {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.90);
+    opacity: 0.95;
 }
 
 .intro-photo {
@@ -832,16 +936,6 @@ body {
 
     .intro {
         color: var(--primary-text);
-    }
-
-    .about {
-        background-color: #1e1e1e;
-        color: var(--primary-text);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-
-    .about p {
-        color: #ccc;
     }
 
     .category-icon {

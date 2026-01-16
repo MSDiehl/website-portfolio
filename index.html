@@ -15,37 +15,44 @@
     </section>
     <div class="spacer"></div>
     <section class="about">
-        <h2>About Me</h2>
-        <p>
-            I am a young motivated full stack developer with a passion for creating dynamic and responsive web applications. I have experience in both frontend and backend technologies, and I am always eager to learn new skills and improve my craft.
-        </p>
-        <div class="tech-stack">
-            <div class="tech-category">
-                <i class="fas fa-laptop-code category-icon" title="Frontend"></i>
-                <h3>Frontend</h3>
-                <div class="tech-logos">
-                    <i class="fab fa-html5" title="HTML5"></i>
-                    <i class="fab fa-css3-alt" title="CSS3"></i>
-                    <i class="fab fa-js" title="JavaScript"></i>
-                    <i class="fab fa-react" title="React"></i>
-                </div>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-server category-icon" title="Backend"></i>
-                <h3>Backend</h3>
-                <div class="tech-logos">
-                    <i class="fab fa-node-js" title="Node.js"></i>
-                    <i class="fas fa-database" title="MongoDB"></i>
-                    <i class="fas fa-server" title="Express"></i>
-                </div>
-            </div>
-            <div class="tech-category">
-                <i class="fas fa-tools category-icon" title="Tools"></i>
-                <h3>Tools</h3>
-                <div class="tech-logos">
-                    <i class="fab fa-git-alt" title="Git"></i>
-                    <i class="fab fa-github" title="GitHub"></i>
-                    <i class="fas fa-code" title="VS Code"></i>
+        <div class="about-shell">
+            <div class="about-bubble">
+                <header class="about-header">
+                    <h2>About Me</h2>
+                    <p>
+                        I’m a motivated full stack developer who loves building dynamic, responsive web apps.
+                        I enjoy working across the stack and I’m always learning to sharpen my craft.
+                    </p>
+                </header>
+                <div class="about-grid">
+                    <article class="about-card frontend" data-x="28" data-y="58" tabindex="0" role="button" aria-label="Frontend">
+                        <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Frontend</h3>
+                        <div class="about-logos">
+                            <i class="fab fa-html5"></i>
+                            <i class="fab fa-css3-alt"></i>
+                            <i class="fab fa-js"></i>
+                            <i class="fab fa-react"></i>
+                        </div>
+                    </article>
+                    <article class="about-card backend" data-x="72" data-y="50" tabindex="0" role="button" aria-label="Backend">
+                        <div class="about-card-icon"><i class="fas fa-server"></i></div>
+                        <h3>Backend</h3>
+                        <div class="about-logos">
+                            <i class="fab fa-node-js"></i>
+                            <i class="fas fa-database"></i>
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </article>
+                    <article class="about-card tools" data-x="50" data-y="74" tabindex="0" role="button" aria-label="Tools">
+                        <div class="about-card-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Tools</h3>
+                        <div class="about-logos">
+                            <i class="fab fa-git-alt"></i>
+                            <i class="fab fa-github"></i>
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -102,11 +109,11 @@
                     <h3>Quick options</h3>
 
                     <div class="contact-actions">
-                        <a class="btn btn-primary" id="email-me" href="mailto:diehl.malachi990@gmail.com?subject=Portfolio%20Inquiry">
+                        <a class="btn btn-primary" id="email-me" href="mailto:your@email.com?subject=Portfolio%20Inquiry">
                             <i class="fa-solid fa-envelope"></i>
                             Email me
                         </a>
-                        <button class="btn btn-ghost" type="button" id="copy-email" data-email="diehl.malachi990@gmail.com">
+                        <button class="btn btn-ghost" type="button" id="copy-email" data-email="your@email.com">
                             <i class="fa-regular fa-copy"></i>
                             Copy email
                         </button>
@@ -115,7 +122,6 @@
                             View projects
                         </a>
                     </div>
-
                     <ul class="contact-badges" aria-label="Availability">
                         <li><i class="fa-solid fa-bolt"></i> Usually replies within 24–48 hours</li>
                         <li><i class="fa-solid fa-location-dot"></i> Open to remote opportunities</li>
@@ -130,7 +136,6 @@
                         </button>
                     </div>
                 </aside>
-
                 <div class="contact-card contact-form" aria-label="Contact form">
                     <form id="contact-form" novalidate>
                         <input type="text" name="company" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
