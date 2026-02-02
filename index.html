@@ -6,11 +6,12 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="index-styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 <body>
     <section class="intro">
         <div class="intro-avatar">
-            <img src="your-photo.jpg" alt="Your Photo" class="intro-photo" />
+            <img src="photos/myphoto.jpeg" alt="My Photo" class="intro-photo" />
             <span class="avatar-ring"></span>
         </div>
         <h1 class="intro-name">Malachi Diehl</h1>
@@ -32,8 +33,8 @@
                 <header class="about-header">
                     <h2>About Me</h2>
                     <p>
-                        I’m a motivated full stack developer who loves building dynamic, responsive web apps.
-                        I enjoy working across the stack and I’m always learning to sharpen my craft.
+                        I'm a motivated full stack developer who loves building dynamic, responsive web apps.
+                        I enjoy working across the stack and I'm always learning to sharpen my craft.
                     </p>
                 </header>
                 <div class="about-grid">
@@ -41,28 +42,32 @@
                         <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
                         <h3>Frontend</h3>
                         <div class="about-logos">
-                            <i class="fab fa-html5"></i>
-                            <i class="fab fa-css3-alt"></i>
-                            <i class="fab fa-js"></i>
-                            <i class="fab fa-react"></i>
+                            <i class="fab fa-html5" aria-label="HTML5"></i>
+                            <i class="fab fa-css3-alt" aria-label="CSS3"></i>
+                            <i class="fab fa-js" aria-label="JavaScript"></i>
+                            <i class="fab fa-react" aria-label="React"></i>
+                            <i class="devicon-typescript-plain" aria-label="TypeScript"></i>
                         </div>
                     </article>
                     <article class="about-card backend" data-x="72" data-y="50" tabindex="0" role="button" aria-label="Backend">
                         <div class="about-card-icon"><i class="fas fa-server"></i></div>
                         <h3>Backend</h3>
                         <div class="about-logos">
-                            <i class="fab fa-node-js"></i>
-                            <i class="fas fa-database"></i>
-                            <i class="fas fa-server"></i>
+                            <i class="devicon-csharp-plain" aria-label="C#"></i>
+                            <i class="devicon-dotnetcore-plain" aria-label=".NET"></i>
+                            <i class="devicon-postgresql-plain" aria-label="PostgreSQL"></i>
+                            <i class="fas fa-database" aria-label="Database"></i>
+                            <i class="fas fa-server" aria-label="Server"></i>
                         </div>
                     </article>
                     <article class="about-card tools" data-x="50" data-y="74" tabindex="0" role="button" aria-label="Tools">
                         <div class="about-card-icon"><i class="fas fa-tools"></i></div>
                         <h3>Tools</h3>
                         <div class="about-logos">
-                            <i class="fab fa-git-alt"></i>
-                            <i class="fab fa-github"></i>
-                            <i class="fas fa-code"></i>
+                            <i class="fab fa-git-alt" aria-label="Git"></i>
+                            <i class="fab fa-github" aria-label="GitHub"></i>
+                            <i class="fas fa-code" aria-label="Code"></i>
+                            <i class="fab fa-docker" aria-label="Docker"></i>
                         </div>
                     </article>
                 </div>
@@ -75,83 +80,266 @@
             <header class="projects-header">
                 <h2>Projects</h2>
                 <p>
-                    A curated list of projects I’m proud of—focused on real-world impact, clean UX, and solid engineering.
+                    A curated list of projects I'm proud of and (kinda) focused on real-world impact, clean UX, and solid engineering.
                 </p>
             </header>
             <div class="project-list">
                 <!-- Project Card -->
                 <article class="project-card">
-                    <div class="project-top">
-                        <div class="project-thumb" aria-label="Project screenshot">
-                            <!-- swap this div for an <img> like:
-                            <img src="..." alt="Commerce Bank project screenshot" />
-                            -->
-                            <span class="thumb-label">
-                                <i class="fa-regular fa-image"></i>
-                                Project Screenshot
-                            </span>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Commerce Bank Project</h3>
-                            <p>
-                                A web application built for Commerce Bank featuring a functional login page. Each user could access data
-                                from various domains via APIs, with unique tables storing their individual data securely.
-                            </p>
-                            <div class="project-tags" aria-label="Tech stack tags">
-                                <span class="tag"><i class="fa-brands fa-html5"></i> HTML</span>
-                                <span class="tag"><i class="fa-brands fa-css3-alt"></i> CSS</span>
-                                <span class="tag"><i class="fa-brands fa-js"></i> JavaScript</span>
-                                <span class="tag"><i class="fa-brands fa-react"></i> React</span>
-                                <span class="tag"><i class="fa-brands fa-node-js"></i> Node</span>
-                            </div>
-                            <div class="project-actions">
-                                <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    Live Demo
-                                </a>
-                                <a class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">
-                                    <i class="fa-brands fa-github"></i>
-                                    GitHub
-                                </a>
-                                <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Learn more
-                                </button>
-                            </div>
+                <div class="project-top">
+                    <div class="project-thumb" aria-label="Project screenshot">
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub1.png"
+                                alt="AnimeHub (V1) project screenshot"
+                                loading="lazy"
+                                data-lightbox="assets/animehub1.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
                         </div>
                     </div>
-                    <div class="project-details" hidden>
-                        <div class="details-grid">
-                            <div class="details-block">
-                                <h4>Highlights</h4>
-                                <ul>
-                                    <li>Secure auth flow and role-based access</li>
-                                    <li>API-driven data views across multiple domains</li>
-                                    <li>Per-user data isolation with unique tables</li>
-                                </ul>
-                            </div>
-                            <div class="details-block">
-                                <h4>More screenshots</h4>
-                                <div class="detail-images">
-                                    <div class="detail-img">Screenshot 1</div>
-                                    <div class="detail-img">Screenshot 2</div>
-                                </div>
-                                <!-- If you have images, replace the divs with <img src="..." alt="..."> -->
+                    <div class="project-meta">
+                    <h3>AnimeHub (V1)</h3>
+                    <p>
+                        A centralized hub for discovering anime, tracking what you're watching, viewing detailed anime pages,
+                        and browsing an upcoming monthly release schedule all with a clean, modern UI.
+                    </p>
+
+                    <div class="project-tags" aria-label="Tech stack tags">
+                        <span class="tag"><i class="fa-brands fa-react"></i>React</span>
+                        <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
+                        <span class="tag"><i class="devicon-dotnetcore-plain" aria-label=".NET"></i>.NET</span>
+                        <span class="tag"><i class="devicon-csharp-plain" aria-label="C#"></i> C#</span>
+                        <span class="tag"><i class="devicon-postgresql-plain" aria-label="PostgreSQL"></i> PortgreSQL</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <!-- <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Live Demo
+                        </a> -->
+                        <button class="btn btn-ghost"
+                                type="button"
+                                onclick="window.open('https://github.com/MSDiehl/anime-hub/tree/prod', '_blank', 'noopener,noreferrer')">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                        </button>
+                        <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Learn more
+                        </button>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="project-details" hidden>
+                    <div class="details-grid">
+                    <div class="details-block">
+                        <h4>Highlights</h4>
+                        <ul>
+                        <li>Per-user authentication (create account, sign in/out) with user-specific tracking data</li>
+                        <li>Search anime by title via AniList and track/untrack shows (persists in the database)</li>
+                        <li>Detailed anime page with banner art, metadata, overview, and placeholder trend graphs (V1)</li>
+                        <li>Weekly release schedule with date navigation + “Tracked only” filter for upcoming episodes</li>
+                        <li>Anime discussions: create/read threads with optional episode scoping</li>
+                        <li>Global forums route to “Coming soon” in V1 (planned Reddit-style feed)</li>
+                        </ul>
+                    </div>
+
+                    <div class="details-block">
+                        <h4>More screenshots</h4>
+                        <div class="detail-images">
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub2.png"
+                                alt="AnimeHub (V1) project screenshot 2"
+                                loading="lazy"
+                                data-lightbox="assets/animehub2.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
+                        </div>
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub3.png"
+                                alt="AnimeHub (V1) project screenshot 3"
+                                loading="lazy"
+                                data-lightbox="assets/animehub3.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
+                        </div>
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub4.png"
+                                alt="AnimeHub (V1) project screenshot 4"
+                                loading="lazy"
+                                data-lightbox="assets/animehub4.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
+                        </div>
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub5.png"
+                                alt="AnimeHub (V1) project screenshot 5"
+                                loading="lazy"
+                                data-lightbox="assets/animehub5.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
+                        </div>
+                        <div class="project-thumb-wrap">
+                            <img class="project-thumb-img project-thumb--click"
+                                src="assets/animehub6.png"
+                                alt="AnimeHub (V1) project screenshot 6"
+                                loading="lazy"
+                                data-lightbox="assets/animehub6.png"
+                                tabindex="0"
+                                role="button"
+                                aria-label="Open project screenshot"
+                            />
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="details-links">
+                        <button class="btn btn-ghost"
+                                type="button"
+                                onclick="window.open('https://github.com/MSDiehl/anime-hub/tree/prod', '_blank', 'noopener,noreferrer')">
+                        <i class="fa-brands fa-github"></i>
+                        View Repo
+                        </button>
+                    </div>
+                </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-thumb" aria-label="Project screenshot">
+                            <div class="project-thumb-wrap">
+                                <img class="project-thumb-img project-thumb--click"
+                                    src="assets/rpg.png"
+                                    alt="Project Randomizer screenshot"
+                                    loading="lazy"
+                                    data-lightbox="assets/rpg.png"
+                                    tabindex="0"
+                                    role="button"
+                                    aria-label="Open project screenshot"
+                                />
                             </div>
                         </div>
+                        <div class="project-meta">
+                        <h3>Random Project Generator</h3>
+                        <p>
+                            A fun side project that I made that uses OPENAI's API and gpt-5.2 model to generate entire random projects.
+                        </p>
+
+                        <div class="project-tags" aria-label="Tech stack tags">
+                            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+                            <span class="tag"><i class="devicon-javascript-plain"></i>JavaScript</span>
+                            <span class="tag"><i class="devicon-html5-plain" aria-label=".NET"></i>HTML</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <!-- <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            Live Demo
+                            </a> -->
+                            <button class="btn btn-ghost"
+                                    type="button"
+                                    onclick="window.open('https://github.com/MSDiehl/project-generator', '_blank', 'noopener,noreferrer')">
+                            <i class="fa-brands fa-github"></i>
+                            GitHub
+                            </button>
+                            <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Learn more
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="project-details" hidden>
+                        <div class="details-grid">
+                        <div class="details-block">
+                            <h4>Highlights</h4>
+                            <ul>
+                            <li>User can specify or make a completely random project.</li>
+                            <li>User can select the quality of the project: Bad, Good, Amazing.</li>
+                            <li>User can select the stack that will be used.</li>
+                            <li>User can play a minigame while project generates.</li>
+                            <li>User can choose to keep or delete the project that was generated and play/use the project.</li>
+                            </ul>
+                        </div>
+
+                        <div class="details-block">
+                            <h4>More screenshots</h4>
+                            <div class="detail-images">
+                                <div class="project-thumb-wrap">
+                                    <img class="project-thumb-img project-thumb--click"
+                                        src="assets/rpg2.png"
+                                        alt="RPG project screenshot 2"
+                                        loading="lazy"
+                                        data-lightbox="assets/rpg2.png"
+                                        tabindex="0"
+                                        role="button"
+                                        aria-label="Open project screenshot"
+                                    />
+                                </div>
+                                <div class="project-thumb-wrap">
+                                    <img class="project-thumb-img project-thumb--click"
+                                        src="assets/rpg3.png"
+                                        alt="RPG project screenshot 3"
+                                        loading="lazy"
+                                        data-lightbox="assets/rpg3.png"
+                                        tabindex="0"
+                                        role="button"
+                                        aria-label="Open project screenshot"
+                                    />
+                                </div>
+                                <div class="project-thumb-wrap">
+                                    <img class="project-thumb-img project-thumb--click"
+                                        src="assets/rpg4.png"
+                                        alt="RPG project screenshot 4"
+                                        loading="lazy"
+                                        data-lightbox="assets/rpg4.png"
+                                        tabindex="0"
+                                        role="button"
+                                        aria-label="Open project screenshot"
+                                    />
+                                </div>
+                                <div class="project-thumb-wrap">
+                                    <img class="project-thumb-img project-thumb--click"
+                                        src="assets/rpg5.png"
+                                        alt="RPG project screenshot 5"
+                                        loading="lazy"
+                                        data-lightbox="assets/rpg5.png"
+                                        tabindex="0"
+                                        role="button"
+                                        aria-label="Open project screenshot"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
                         <div class="details-links">
-                            <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
-                                <i class="fa-solid fa-globe"></i>
-                                Visit Live Site
-                            </a>
-                            <a class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">
-                                <i class="fa-brands fa-github"></i>
-                                View Repo
-                            </a>
+                            <button class="btn btn-ghost"
+                                    type="button"
+                                    onclick="window.open('https://github.com/MSDiehl/project-generator', '_blank', 'noopener,noreferrer')">
+                            <i class="fa-brands fa-github"></i>
+                            View Repo
+                            </button>
                         </div>
                     </div>
                 </article>
-                <!-- Copy/paste another <article class="project-card">...</article> for each worthy project -->
             </div>
         </div>
     </section>
@@ -159,9 +347,9 @@
     <section id="contact" class="contact">
         <div class="contact-shell">
             <header class="contact-header">
-                <h2>Let’s connect</h2>
+                <h2>Let's connect</h2>
                 <p>
-                    Want to collaborate, talk about a role, or just say hi? Send a message below and I’ll get back to you.
+                    Want to collaborate, talk about a role, or just say hi? Send a message below and I'll get back to you.
                 </p>
             </header>
 
@@ -170,11 +358,11 @@
                     <h3>Quick options</h3>
 
                     <div class="contact-actions">
-                        <a class="btn btn-primary" id="email-me" href="mailto:your@email.com?subject=Portfolio%20Inquiry">
+                        <a class="btn btn-primary" id="email-me" href="mailto:diehl.malachi990@gmail.com?subject=Portfolio%20Inquiry">
                             <i class="fa-solid fa-envelope"></i>
                             Email me
                         </a>
-                        <button class="btn btn-ghost" type="button" id="copy-email" data-email="your@email.com">
+                        <button class="btn btn-ghost" type="button" id="copy-email" data-email="diehl.malachi990@gmail.com">
                             <i class="fa-regular fa-copy"></i>
                             Copy email
                         </button>
@@ -184,9 +372,9 @@
                         </a>
                     </div>
                     <ul class="contact-badges" aria-label="Availability">
-                        <li><i class="fa-solid fa-bolt"></i> Usually replies within 24–48 hours</li>
+                        <li><i class="fa-solid fa-bolt"></i> Usually replies within 24-48 hours</li>
                         <li><i class="fa-solid fa-location-dot"></i> Open to remote opportunities</li>
-                        <li><i class="fa-solid fa-shield"></i> No spam—messages are validated</li>
+                        <li><i class="fa-solid fa-shield"></i> No spam messages are validated</li>
                     </ul>
                     <div class="social-links" aria-label="Social links">
                         <button class="social" data-link="linkedin" aria-label="LinkedIn">
@@ -244,7 +432,7 @@
 
                         <label class="field">
                             <span class="field-label">Message</span>
-                            <textarea name="message" id="message" rows="6" placeholder="Tell me what you’re working on…" maxlength="1200" required></textarea>
+                            <textarea name="message" id="message" rows="6" placeholder="Tell me what you're working on…" maxlength="1200" required></textarea>
                             <span class="field-help">
                                 <span id="message-count">0</span>/1200
                             </span>
@@ -280,7 +468,7 @@
                         </div>
 
                         <p class="form-note">
-                            This form opens your email client with a pre-filled message. If it doesn’t open,
+                            This form opens your email client with a pre-filled message. If it doesn't open,
                             use the “Email me” button on the left.
                         </p>
                     </form>
@@ -290,7 +478,59 @@
             <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
         </div>
     </section>
-
+    <div class="spacer"></div>
+    <section id="contact" class="contact">
+        <!-- (contact repeated section removed - original kept above) -->
+    </section>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" type="button" aria-label="Close image">&times;</button>
+        <img class="lightbox-img" alt="" />
+    </div>
     <script src="index-script.js"></script>
 </body>
 </html>
+
+<script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('.lightbox-img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || 'Project screenshot';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('img[data-lightbox]');
+      if (img) {
+        openLightbox(img.dataset.lightbox, img.alt);
+        return;
+      }
+
+      if (lightbox.classList.contains('is-open') && e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  })();
+</script>
+

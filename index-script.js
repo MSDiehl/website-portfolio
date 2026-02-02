@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function getEmailTo() {
         const mailto = document.getElementById("email-me")?.getAttribute("href") || "";
         if (mailto.startsWith("mailto:")) return mailto.replace("mailto:", "").split("?")[0];
-        return copyEmailBtn?.dataset?.email || "your@email.com";
+        return copyEmailBtn?.dataset?.email || "diehl.malachi990@gmail.com";
     }
 
     function setFieldError(inputEl, isError) {

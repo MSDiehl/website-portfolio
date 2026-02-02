@@ -103,12 +103,17 @@ body {
     opacity: 0;
 }
 
-.intro-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 6px solid var(--accent);
-    margin-bottom: 1.5rem;
+.intro-photo{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid var(--accent);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
 }
 
 .intro-name {
@@ -126,29 +131,32 @@ body {
    INTRO – HERO POLISH
    =============================== */
 
-.intro-avatar {
-    position: relative;
-    margin-bottom: 1.75rem;
+.intro-avatar{
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 1.75rem;
+  isolation: isolate;
 }
 
-.avatar-ring {
-    position: absolute;
-    inset: -12px;
-    border-radius: 50%;
-    pointer-events: none;
+.avatar-ring{
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  pointer-events: none;
 
-    background:
-        conic-gradient(
-            from 0deg,
-            rgba(142, 68, 173, 0.9),
-            rgba(109, 40, 217, 0.9),
-            rgba(142, 68, 173, 0.9)
-        );
+  background:
+    conic-gradient(
+      from 0deg,
+      rgba(142, 68, 173, 0.9),
+      rgba(109, 40, 217, 0.9),
+      rgba(142, 68, 173, 0.9)
+    );
 
-    filter: blur(2px);
-    opacity: 0.85;
-    animation: ringPulse 6s ease-in-out infinite;
-    z-index: -1;
+  filter: blur(2px);
+  opacity: 0.85;
+  animation: ringPulse 6s ease-in-out infinite;
+  z-index: 0;
 }
 
 @keyframes ringPulse {
@@ -506,6 +514,23 @@ body {
 }
 
 .project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-thumb{
+  aspect-ratio: 16 / 10;
+  width: 100%;
+}
+
+.project-thumb-wrap{
+  width: 100%;
+  height: 100%;
+}
+
+.project-thumb-img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1092,6 +1117,56 @@ body {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+/* Modal */
+
+.project-thumb-wrap { position: relative; }
+
+.project-thumb--click{
+  cursor: zoom-in;
+}
+
+/* Lightbox */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
+.lightbox.is-open{ display: grid; }
+
+.lightbox-img{
+  max-width: min(1100px, 92vw);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.lightbox-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  color: rgba(255,255,255,.92);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover{
+  background: rgba(255,255,255,.16);
 }
 
 @media (max-width: 900px) {
