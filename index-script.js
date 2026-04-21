@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const about = document.querySelector(".about");
     const projects = document.querySelector(".projects");
     const contact = document.querySelector(".contact");
-    const techLogos = document.querySelectorAll(".tech-logos i");
     const learnMoreButtons = document.querySelectorAll(".learn-more");
+    const previewButtons = document.querySelectorAll(".project-preview");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox?.querySelector(".lightbox-img");
+    const lightboxClose = lightbox?.querySelector(".lightbox-close");
 
     const SOCIAL_LINKS = {
         linkedin: "https://www.linkedin.com/in/malachi-diehl-04b961251/",
@@ -12,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     requestAnimationFrame(() => {
+        if (!intro) return;
         intro.style.opacity = "1";
         intro.style.transform = "translateY(0)";
     });
@@ -40,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleScroll() {
+        if (!intro || !about || !projects || !contact) return;
         const scrollY = window.scrollY;
         const aboutTop = about.getBoundingClientRect().top;
         const projectsTop = projects.getBoundingClientRect().top;
@@ -63,16 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             contact.classList.remove("visible");
         }
-
-        techLogos.forEach(img => {
-            const imgTop = img.getBoundingClientRect().top;
-            if (imgTop < window.innerHeight * 0.85) {
-                img.classList.add("visible");
-            }
-        });
     }
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     learnMoreButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -93,6 +92,59 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImg || !lightboxClose || !src) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Project screenshot";
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", e => {
+        const img = e.target.closest?.("img[data-lightbox]");
+        if (img) {
+            openLightbox(img.dataset.lightbox, img.alt);
+            return;
+        }
+
+        if (lightbox?.classList.contains("is-open") && e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", e => {
+        const target = e.target;
+        const imageTrigger = target?.matches?.("img[data-lightbox]");
+
+        if (imageTrigger && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            openLightbox(target.dataset.lightbox, target.alt);
+            return;
+        }
+
+        if (e.key === "Escape" && lightbox?.classList.contains("is-open")) {
+            closeLightbox();
+        }
+    });
+
+    previewButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            openLightbox(button.dataset.preview, button.dataset.previewAlt);
+        });
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
 
     // -------------------------
     // About bubble "physics"
@@ -391,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const budgetLabel = document.getElementById("budget-label");
 
     const DRAFT_KEY = "portfolio_contact_draft_v1";
-    const budgetLabels = ["Not sure", "$500–$1k", "$1k–$3k", "$3k–$7k", "$7k–$15k", "$15k+"];
+    const budgetLabels = ["Not sure", "$500-$1k", "$1k-$3k", "$3k-$7k", "$7k-$15k", "$15k+"];
     const reasonLabels = {
         role: "Job opportunity",
         freelance: "Freelance / contract",
@@ -430,8 +482,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getLinkedInUrl() {
         const link = document.querySelector('.social[aria-label="LinkedIn"]');
-        const href = link?.getAttribute?.('href') || "";
-        return href && href !== "#" ? href : "";
+        const href = link?.getAttribute?.("href") || "";
+        return href && href !== "#" ? href : SOCIAL_LINKS.linkedin;
     }
 
     function ensureFallbackPanel() {
@@ -553,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 120);
     }
 
-    function clearDraft() {
+    function clearDraft(showMessage = true) {
         try {
             localStorage.removeItem(DRAFT_KEY);
         } catch {
@@ -562,7 +614,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (form) form.reset();
         updateMessageCount();
         updateBudgetLabel();
-        showToast("Cleared");
+        if (showMessage) showToast("Cleared");
     }
 
     async function copyEmail() {
@@ -608,8 +660,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const budgetText = budgetLabels[budgetIdx] || budgetLabels[0];
 
         const subject = subjectLine
-            ? `Portfolio — ${subjectLine}`
-            : `Portfolio — ${reason} (${name || "Anonymous"})`;
+            ? `Portfolio - ${subjectLine}`
+            : `Portfolio - ${reason} (${name || "Anonymous"})`;
 
         const bodyLines = [
             `Name: ${name}`,
@@ -709,13 +761,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 (async () => {
                     try {
                         await navigator.clipboard.writeText(plainText);
-                        showToast("Message copied — opening LinkedIn…");
+                        showToast("Message copied - opening LinkedIn...");
                     } catch {
-                        showToast("Opening LinkedIn…");
+                        showToast("Opening LinkedIn...");
                     }
                     if (li) window.open(li, "_blank", "noopener,noreferrer");
                     else if (fallback) fallback.classList.add("show");
-                    clearDraft();
+                    clearDraft(false);
                 })().finally(() => {
                     window.setTimeout(() => {
                         if (sendBtn) sendBtn.disabled = false;
@@ -732,7 +784,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.setTimeout(() => {
                     fallback?.classList.add("show");
                 }, 900);
-                clearDraft();
+                clearDraft(false);
             } finally {
                 window.setTimeout(() => {
                     if (sendBtn) sendBtn.disabled = false;
@@ -740,18 +792,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    document.querySelectorAll(".social[data-link]").forEach(button => {
-        button.addEventListener("click", () => {
-            const key = button.dataset.link;
-            const url = SOCIAL_LINKS[key];
-
-            if (!url) {
-            console.warn(`No URL configured for ${key}`);
-            return;
-            }
-
-            window.open(url, "_blank", "noopener");
-        });
-    });
 });

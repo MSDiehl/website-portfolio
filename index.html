@@ -3,42 +3,87 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <meta name="description" content="Portfolio for Malachi Diehl, a full stack developer building React, TypeScript, .NET, C#, and PostgreSQL applications with polished user experiences." />
+    <meta name="author" content="Malachi Diehl" />
+    <meta name="theme-color" content="#8e44ad" />
+    <meta property="og:title" content="Malachi Diehl | Full Stack Developer" />
+    <meta property="og:description" content="Full stack portfolio featuring React, TypeScript, .NET, C#, PostgreSQL, and OpenAI API projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="photos/myphoto-640.jpg" />
+    <title>Malachi Diehl | Full Stack Developer</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="stylesheet" href="index-styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
-    <section class="intro">
+    <section class="intro" id="top">
         <div class="intro-avatar">
-            <img src="photos/myphoto.jpeg" alt="My Photo" class="intro-photo" />
+            <picture>
+                <source
+                    srcset="photos/myphoto-320.webp 320w, photos/myphoto-640.webp 640w"
+                    sizes="250px"
+                    type="image/webp"
+                />
+                <img
+                    src="photos/myphoto-640.jpg"
+                    alt="Portrait of Malachi Diehl"
+                    class="intro-photo"
+                    width="250"
+                    height="250"
+                    fetchpriority="high"
+                />
+            </picture>
             <span class="avatar-ring"></span>
         </div>
         <h1 class="intro-name">Malachi Diehl</h1>
-        <p class="intro-roles">
+        <p class="intro-roles" aria-label="Developer roles">
             <span class="role active">Full Stack Developer</span>
             <span class="role">Frontend Engineer</span>
             <span class="role">Backend Engineer</span>
             <span class="role">Problem Solver</span>
         </p>
+        <p class="intro-summary">
+            I build responsive React and TypeScript interfaces backed by .NET APIs, C#, PostgreSQL, and practical product thinking.
+        </p>
+        <nav class="hero-actions" aria-label="Primary links">
+            <a class="btn btn-primary" href="#projects">
+                <i class="fa-solid fa-folder-open"></i>
+                View Projects
+            </a>
+            <a class="btn btn-ghost" href="assets/Malachi-Diehl-Resume.pdf" download>
+                <i class="fa-solid fa-file-arrow-down"></i>
+                Download Resume
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/MSDiehl" target="_blank" rel="noreferrer">
+                <i class="fa-brands fa-github"></i>
+                GitHub
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/malachi-diehl-04b961251/" target="_blank" rel="noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </nav>
         <div class="scroll-hint">
             <span>Scroll</span>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
     </section>
+
     <div class="spacer"></div>
-    <section class="about">
+
+    <section class="about" id="about">
         <div class="about-shell">
             <div class="about-bubble">
                 <header class="about-header">
                     <h2>About Me</h2>
                     <p>
-                        I'm a motivated full stack developer who loves building dynamic, responsive web apps.
-                        I enjoy working across the stack and I'm always learning to sharpen my craft.
+                        I like building web apps where frontend polish and backend reliability both matter. My recent work focuses on React, TypeScript, .NET, C#, PostgreSQL, API design, and interfaces that make complex workflows easier to use.
                     </p>
                 </header>
                 <div class="about-grid">
-                    <article class="about-card frontend" data-x="28" data-y="58" tabindex="0" role="button" aria-label="Frontend">
+                    <article class="about-card frontend" data-x="28" data-y="58" tabindex="0" role="button" aria-label="Frontend skills">
                         <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
                         <h3>Frontend</h3>
                         <div class="about-logos">
@@ -49,7 +94,7 @@
                             <i class="devicon-typescript-plain" aria-label="TypeScript"></i>
                         </div>
                     </article>
-                    <article class="about-card backend" data-x="72" data-y="50" tabindex="0" role="button" aria-label="Backend">
+                    <article class="about-card backend" data-x="72" data-y="50" tabindex="0" role="button" aria-label="Backend skills">
                         <div class="about-card-icon"><i class="fas fa-server"></i></div>
                         <h3>Backend</h3>
                         <div class="about-logos">
@@ -60,13 +105,13 @@
                             <i class="fas fa-server" aria-label="Server"></i>
                         </div>
                     </article>
-                    <article class="about-card tools" data-x="50" data-y="74" tabindex="0" role="button" aria-label="Tools">
+                    <article class="about-card tools" data-x="50" data-y="74" tabindex="0" role="button" aria-label="Developer tools">
                         <div class="about-card-icon"><i class="fas fa-tools"></i></div>
                         <h3>Tools</h3>
                         <div class="about-logos">
                             <i class="fab fa-git-alt" aria-label="Git"></i>
                             <i class="fab fa-github" aria-label="GitHub"></i>
-                            <i class="fas fa-code" aria-label="Code"></i>
+                            <i class="fas fa-code" aria-label="Code editor"></i>
                             <i class="fab fa-docker" aria-label="Docker"></i>
                         </div>
                     </article>
@@ -74,282 +119,341 @@
             </div>
         </div>
     </section>
+
     <div class="spacer"></div>
+
     <section id="projects" class="projects">
         <div class="projects-shell">
             <header class="projects-header">
                 <h2>Projects</h2>
                 <p>
-                    A curated list of projects I'm proud of and (kinda) focused on real-world impact, clean UX, and solid engineering.
+                    A focused set of projects that show full stack ownership, product thinking, clean UX, and practical engineering decisions.
                 </p>
             </header>
             <div class="project-list">
-                <!-- Project Card -->
-                <article class="project-card">
-                <div class="project-top">
-                    <div class="project-thumb" aria-label="Project screenshot">
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub1.png"
-                                alt="AnimeHub (V1) project screenshot"
-                                loading="lazy"
-                                data-lightbox="assets/animehub1.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                    </div>
-                    <div class="project-meta">
-                    <h3>AnimeHub (V1)</h3>
-                    <p>
-                        A centralized hub for discovering anime, tracking what you're watching, viewing detailed anime pages,
-                        and browsing an upcoming monthly release schedule all with a clean, modern UI.
-                    </p>
-
-                    <div class="project-tags" aria-label="Tech stack tags">
-                        <span class="tag"><i class="fa-brands fa-react"></i>React</span>
-                        <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
-                        <span class="tag"><i class="devicon-dotnetcore-plain" aria-label=".NET"></i>.NET</span>
-                        <span class="tag"><i class="devicon-csharp-plain" aria-label="C#"></i> C#</span>
-                        <span class="tag"><i class="devicon-postgresql-plain" aria-label="PostgreSQL"></i> PortgreSQL</span>
-                    </div>
-
-                    <div class="project-actions">
-                        <!-- <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        Live Demo
-                        </a> -->
-                        <button class="btn btn-ghost"
-                                type="button"
-                                onclick="window.open('https://github.com/MSDiehl/anime-hub/tree/prod', '_blank', 'noopener,noreferrer')">
-                        <i class="fa-brands fa-github"></i>
-                        GitHub
-                        </button>
-                        <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
-                        <i class="fa-solid fa-circle-info"></i>
-                        Learn more
-                        </button>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="project-details" hidden>
-                    <div class="details-grid">
-                    <div class="details-block">
-                        <h4>Highlights</h4>
-                        <ul>
-                        <li>Per-user authentication (create account, sign in/out) with user-specific tracking data</li>
-                        <li>Search anime by title via AniList and track/untrack shows (persists in the database)</li>
-                        <li>Detailed anime page with banner art, metadata, overview, and placeholder trend graphs (V1)</li>
-                        <li>Weekly release schedule with date navigation + “Tracked only” filter for upcoming episodes</li>
-                        <li>Anime discussions: create/read threads with optional episode scoping</li>
-                        <li>Global forums route to “Coming soon” in V1 (planned Reddit-style feed)</li>
-                        </ul>
-                    </div>
-
-                    <div class="details-block">
-                        <h4>More screenshots</h4>
-                        <div class="detail-images">
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub2.png"
-                                alt="AnimeHub (V1) project screenshot 2"
-                                loading="lazy"
-                                data-lightbox="assets/animehub2.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub3.png"
-                                alt="AnimeHub (V1) project screenshot 3"
-                                loading="lazy"
-                                data-lightbox="assets/animehub3.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub4.png"
-                                alt="AnimeHub (V1) project screenshot 4"
-                                loading="lazy"
-                                data-lightbox="assets/animehub4.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub5.png"
-                                alt="AnimeHub (V1) project screenshot 5"
-                                loading="lazy"
-                                data-lightbox="assets/animehub5.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                        <div class="project-thumb-wrap">
-                            <img class="project-thumb-img project-thumb--click"
-                                src="assets/animehub6.png"
-                                alt="AnimeHub (V1) project screenshot 6"
-                                loading="lazy"
-                                data-lightbox="assets/animehub6.png"
-                                tabindex="0"
-                                role="button"
-                                aria-label="Open project screenshot"
-                            />
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="details-links">
-                        <button class="btn btn-ghost"
-                                type="button"
-                                onclick="window.open('https://github.com/MSDiehl/anime-hub/tree/prod', '_blank', 'noopener,noreferrer')">
-                        <i class="fa-brands fa-github"></i>
-                        View Repo
-                        </button>
-                    </div>
-                </div>
-                </article>
                 <article class="project-card">
                     <div class="project-top">
-                        <div class="project-thumb" aria-label="Project screenshot">
+                        <div class="project-thumb" aria-label="AnimeHub project screenshot">
                             <div class="project-thumb-wrap">
-                                <img class="project-thumb-img project-thumb--click"
-                                    src="assets/rpg.png"
-                                    alt="Project Randomizer screenshot"
+                                <img
+                                    class="project-thumb-img project-thumb--click"
+                                    src="assets/animehub1-1280.webp"
+                                    srcset="assets/animehub1-640.webp 640w, assets/animehub1-1280.webp 1280w"
+                                    sizes="(max-width: 900px) 92vw, 360px"
+                                    alt="AnimeHub dashboard showing anime discovery and tracking"
                                     loading="lazy"
-                                    data-lightbox="assets/rpg.png"
+                                    width="1874"
+                                    height="923"
+                                    data-lightbox="assets/animehub1-1280.webp"
                                     tabindex="0"
                                     role="button"
-                                    aria-label="Open project screenshot"
+                                    aria-label="Open AnimeHub dashboard screenshot"
                                 />
                             </div>
                         </div>
                         <div class="project-meta">
-                        <h3>Random Project Generator</h3>
-                        <p>
-                            A fun side project that I made that uses OPENAI's API and gpt-5.2 model to generate entire random projects.
-                        </p>
+                            <h3>AnimeHub (V1)</h3>
+                            <p>
+                                A full stack anime tracking app for discovering shows, managing a personal watch list, viewing release schedules, and discussing episodes.
+                            </p>
 
-                        <div class="project-tags" aria-label="Tech stack tags">
-                            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
-                            <span class="tag"><i class="devicon-javascript-plain"></i>JavaScript</span>
-                            <span class="tag"><i class="devicon-html5-plain" aria-label=".NET"></i>HTML</span>
-                        </div>
+                            <div class="project-tags" aria-label="AnimeHub tech stack">
+                                <span class="tag"><i class="fa-brands fa-react"></i>React</span>
+                                <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
+                                <span class="tag"><i class="devicon-dotnetcore-plain" aria-label=".NET"></i>.NET</span>
+                                <span class="tag"><i class="devicon-csharp-plain" aria-label="C#"></i>C#</span>
+                                <span class="tag"><i class="devicon-postgresql-plain" aria-label="PostgreSQL"></i>PostgreSQL</span>
+                            </div>
 
-                        <div class="project-actions">
-                            <!-- <a class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            Live Demo
-                            </a> -->
-                            <button class="btn btn-ghost"
+                            <div class="project-actions">
+                                <button
+                                    class="btn btn-primary project-preview"
                                     type="button"
-                                    onclick="window.open('https://github.com/MSDiehl/project-generator', '_blank', 'noopener,noreferrer')">
-                            <i class="fa-brands fa-github"></i>
-                            GitHub
-                            </button>
-                            <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
-                            <i class="fa-solid fa-circle-info"></i>
-                            Learn more
-                            </button>
-                        </div>
+                                    data-preview="assets/animehub1-1280.webp"
+                                    data-preview-alt="AnimeHub dashboard showing anime discovery and tracking"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                    UI Preview
+                                </button>
+                                <a class="btn btn-ghost" href="https://github.com/MSDiehl/anime-hub/tree/prod" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-github"></i>
+                                    GitHub
+                                </a>
+                                <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Learn more
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="project-details" hidden>
                         <div class="details-grid">
-                        <div class="details-block">
-                            <h4>Highlights</h4>
-                            <ul>
-                            <li>User can specify or make a completely random project.</li>
-                            <li>User can select the quality of the project: Bad, Good, Amazing.</li>
-                            <li>User can select the stack that will be used.</li>
-                            <li>User can play a minigame while project generates.</li>
-                            <li>User can choose to keep or delete the project that was generated and play/use the project.</li>
-                            </ul>
-                        </div>
+                            <div class="details-block">
+                                <h4>Case Study</h4>
+                                <div class="case-study">
+                                    <p><strong>Problem:</strong> Anime fans often split discovery, episode tracking, schedules, and discussion across separate tools.</p>
+                                    <p><strong>Role:</strong> Designed and built the V1 full stack experience across React, TypeScript, .NET, C#, and PostgreSQL.</p>
+                                    <p><strong>Challenge:</strong> Keeping AniList-powered search, user-specific tracking data, and release schedule filtering consistent across the app.</p>
+                                    <p><strong>Result:</strong> Shipped a cohesive V1 with account flows, saved tracking state, detailed anime pages, schedule navigation, and episode-scoped discussions.</p>
+                                    <p><strong>Learning:</strong> Reinforced the value of clear API boundaries, predictable state management, and designing early versions around the workflows users repeat most.</p>
+                                </div>
+                            </div>
 
-                        <div class="details-block">
-                            <h4>More screenshots</h4>
-                            <div class="detail-images">
-                                <div class="project-thumb-wrap">
-                                    <img class="project-thumb-img project-thumb--click"
-                                        src="assets/rpg2.png"
-                                        alt="RPG project screenshot 2"
-                                        loading="lazy"
-                                        data-lightbox="assets/rpg2.png"
-                                        tabindex="0"
-                                        role="button"
-                                        aria-label="Open project screenshot"
-                                    />
-                                </div>
-                                <div class="project-thumb-wrap">
-                                    <img class="project-thumb-img project-thumb--click"
-                                        src="assets/rpg3.png"
-                                        alt="RPG project screenshot 3"
-                                        loading="lazy"
-                                        data-lightbox="assets/rpg3.png"
-                                        tabindex="0"
-                                        role="button"
-                                        aria-label="Open project screenshot"
-                                    />
-                                </div>
-                                <div class="project-thumb-wrap">
-                                    <img class="project-thumb-img project-thumb--click"
-                                        src="assets/rpg4.png"
-                                        alt="RPG project screenshot 4"
-                                        loading="lazy"
-                                        data-lightbox="assets/rpg4.png"
-                                        tabindex="0"
-                                        role="button"
-                                        aria-label="Open project screenshot"
-                                    />
-                                </div>
-                                <div class="project-thumb-wrap">
-                                    <img class="project-thumb-img project-thumb--click"
-                                        src="assets/rpg5.png"
-                                        alt="RPG project screenshot 5"
-                                        loading="lazy"
-                                        data-lightbox="assets/rpg5.png"
-                                        tabindex="0"
-                                        role="button"
-                                        aria-label="Open project screenshot"
-                                    />
+                            <div class="details-block">
+                                <h4>More screenshots</h4>
+                                <div class="detail-images">
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/animehub2-1280.webp"
+                                            srcset="assets/animehub2-640.webp 640w, assets/animehub2-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="AnimeHub search and browsing screen"
+                                            loading="lazy"
+                                            width="1863"
+                                            height="926"
+                                            data-lightbox="assets/animehub2-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open AnimeHub search screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/animehub3-1280.webp"
+                                            srcset="assets/animehub3-640.webp 640w, assets/animehub3-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="AnimeHub anime detail page"
+                                            loading="lazy"
+                                            width="1861"
+                                            height="925"
+                                            data-lightbox="assets/animehub3-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open AnimeHub detail page screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/animehub4-1280.webp"
+                                            srcset="assets/animehub4-640.webp 640w, assets/animehub4-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="AnimeHub release schedule screen"
+                                            loading="lazy"
+                                            width="1859"
+                                            height="924"
+                                            data-lightbox="assets/animehub4-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open AnimeHub schedule screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/animehub5-1280.webp"
+                                            srcset="assets/animehub5-640.webp 640w, assets/animehub5-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="AnimeHub discussion thread screen"
+                                            loading="lazy"
+                                            width="1861"
+                                            height="924"
+                                            data-lightbox="assets/animehub5-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open AnimeHub discussion screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/animehub6-1280.webp"
+                                            srcset="assets/animehub6-640.webp 640w, assets/animehub6-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="AnimeHub user tracking screen"
+                                            loading="lazy"
+                                            width="1875"
+                                            height="923"
+                                            data-lightbox="assets/animehub6-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open AnimeHub tracking screenshot"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="details-links">
+                            <a class="btn btn-ghost" href="https://github.com/MSDiehl/anime-hub/tree/prod" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-github"></i>
+                                View Repo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-thumb" aria-label="Random Project Generator screenshot">
+                            <div class="project-thumb-wrap">
+                                <img
+                                    class="project-thumb-img project-thumb--click"
+                                    src="assets/rpg-1280.webp"
+                                    srcset="assets/rpg-640.webp 640w, assets/rpg-1280.webp 1280w"
+                                    sizes="(max-width: 900px) 92vw, 360px"
+                                    alt="Random Project Generator interface"
+                                    loading="lazy"
+                                    width="1870"
+                                    height="919"
+                                    data-lightbox="assets/rpg-1280.webp"
+                                    tabindex="0"
+                                    role="button"
+                                    aria-label="Open Random Project Generator screenshot"
+                                />
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <h3>Random Project Generator</h3>
+                            <p>
+                                An OpenAI API powered tool that turns a user prompt, quality setting, and stack preference into a generated project with an interactive waiting experience.
+                            </p>
+
+                            <div class="project-tags" aria-label="Random Project Generator tech stack">
+                                <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+                                <span class="tag"><i class="devicon-javascript-plain"></i>JavaScript</span>
+                                <span class="tag"><i class="devicon-html5-plain" aria-label="HTML"></i>HTML</span>
+                            </div>
+
+                            <div class="project-actions">
+                                <button
+                                    class="btn btn-primary project-preview"
+                                    type="button"
+                                    data-preview="assets/rpg-1280.webp"
+                                    data-preview-alt="Random Project Generator interface"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                    UI Preview
+                                </button>
+                                <a class="btn btn-ghost" href="https://github.com/MSDiehl/project-generator" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-github"></i>
+                                    GitHub
+                                </a>
+                                <button class="btn btn-ghost learn-more" type="button" aria-expanded="false">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Learn more
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-details" hidden>
+                        <div class="details-grid">
+                            <div class="details-block">
+                                <h4>Case Study</h4>
+                                <div class="case-study">
+                                    <p><strong>Problem:</strong> Starting a side project can stall at the idea, stack, and first-file setup stage.</p>
+                                    <p><strong>Role:</strong> Built the generator flow, prompt controls, project quality settings, stack selection, and interactive loading experience.</p>
+                                    <p><strong>Challenge:</strong> Turning open-ended user input into structured project output while keeping the waiting state useful and entertaining.</p>
+                                    <p><strong>Result:</strong> Created a tool that can generate random or user-directed project ideas, let users choose quality and stack, and keep or delete generated results.</p>
+                                    <p><strong>Learning:</strong> Practiced designing AI-assisted workflows around user control, fallback behavior, and clear output review before a result is accepted.</p>
+                                </div>
+                            </div>
+
+                            <div class="details-block">
+                                <h4>More screenshots</h4>
+                                <div class="detail-images">
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/rpg2-1280.webp"
+                                            srcset="assets/rpg2-640.webp 640w, assets/rpg2-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="Random Project Generator settings screen"
+                                            loading="lazy"
+                                            width="1855"
+                                            height="925"
+                                            data-lightbox="assets/rpg2-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open Random Project Generator settings screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/rpg3-1280.webp"
+                                            srcset="assets/rpg3-640.webp 640w, assets/rpg3-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="Random Project Generator stack selection screen"
+                                            loading="lazy"
+                                            width="1856"
+                                            height="920"
+                                            data-lightbox="assets/rpg3-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open Random Project Generator stack selection screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/rpg4-1280.webp"
+                                            srcset="assets/rpg4-640.webp 640w, assets/rpg4-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="Random Project Generator minigame while generating"
+                                            loading="lazy"
+                                            width="1852"
+                                            height="918"
+                                            data-lightbox="assets/rpg4-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open Random Project Generator minigame screenshot"
+                                        />
+                                    </div>
+                                    <div class="project-thumb-wrap">
+                                        <img
+                                            class="project-thumb-img project-thumb--click"
+                                            src="assets/rpg5-1280.webp"
+                                            srcset="assets/rpg5-640.webp 640w, assets/rpg5-1280.webp 1280w"
+                                            sizes="(max-width: 900px) 92vw, 500px"
+                                            alt="Random Project Generator generated result screen"
+                                            loading="lazy"
+                                            width="1872"
+                                            height="923"
+                                            data-lightbox="assets/rpg5-1280.webp"
+                                            tabindex="0"
+                                            role="button"
+                                            aria-label="Open Random Project Generator result screenshot"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="details-links">
-                            <button class="btn btn-ghost"
-                                    type="button"
-                                    onclick="window.open('https://github.com/MSDiehl/project-generator', '_blank', 'noopener,noreferrer')">
-                            <i class="fa-brands fa-github"></i>
-                            View Repo
-                            </button>
+                            <a class="btn btn-ghost" href="https://github.com/MSDiehl/project-generator" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-github"></i>
+                                View Repo
+                            </a>
                         </div>
                     </div>
                 </article>
             </div>
         </div>
     </section>
+
     <div class="spacer"></div>
+
     <section id="contact" class="contact">
         <div class="contact-shell">
             <header class="contact-header">
                 <h2>Let's connect</h2>
                 <p>
-                    Want to collaborate, talk about a role, or just say hi? Send a message below and I'll get back to you.
+                    Want to collaborate, talk about a role, or ask about a project? Send a message below and I'll get back to you.
                 </p>
             </header>
 
@@ -370,21 +474,26 @@
                             <i class="fa-solid fa-folder-open"></i>
                             View projects
                         </a>
+                        <a class="btn btn-ghost" href="assets/Malachi-Diehl-Resume.pdf" download>
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            Download resume
+                        </a>
                     </div>
                     <ul class="contact-badges" aria-label="Availability">
                         <li><i class="fa-solid fa-bolt"></i> Usually replies within 24-48 hours</li>
                         <li><i class="fa-solid fa-location-dot"></i> Open to remote opportunities</li>
-                        <li><i class="fa-solid fa-shield"></i> No spam messages are validated</li>
+                        <li><i class="fa-solid fa-shield"></i> Spam-protected contact form</li>
                     </ul>
                     <div class="social-links" aria-label="Social links">
-                        <button class="social" data-link="linkedin" aria-label="LinkedIn">
+                        <a class="social" href="https://www.linkedin.com/in/malachi-diehl-04b961251/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                             <i class="fab fa-linkedin"></i>
-                        </button>
-                        <button class="social" data-link="github" aria-label="GitHub">
+                        </a>
+                        <a class="social" href="https://github.com/MSDiehl" target="_blank" rel="noreferrer" aria-label="GitHub">
                             <i class="fab fa-github"></i>
-                        </button>
+                        </a>
                     </div>
                 </aside>
+
                 <div class="contact-card contact-form" aria-label="Contact form">
                     <form id="contact-form" novalidate>
                         <input type="text" name="company" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -393,7 +502,7 @@
                             <label class="field">
                                 <span class="field-label">Reason</span>
                                 <select name="reason" id="reason" required>
-                                    <option value="" selected disabled>Select one…</option>
+                                    <option value="" selected disabled>Select one...</option>
                                     <option value="role">Job opportunity</option>
                                     <option value="freelance">Freelance / contract</option>
                                     <option value="collab">Collaboration</option>
@@ -432,7 +541,7 @@
 
                         <label class="field">
                             <span class="field-label">Message</span>
-                            <textarea name="message" id="message" rows="6" placeholder="Tell me what you're working on…" maxlength="1200" required></textarea>
+                            <textarea name="message" id="message" rows="6" placeholder="Tell me what you're working on..." maxlength="1200" required></textarea>
                             <span class="field-help">
                                 <span id="message-count">0</span>/1200
                             </span>
@@ -468,8 +577,7 @@
                         </div>
 
                         <p class="form-note">
-                            This form opens your email client with a pre-filled message. If it doesn't open,
-                            use the “Email me” button on the left.
+                            This form opens your email client with a pre-filled message. If it does not open, use the "Email me" button on the left.
                         </p>
                     </form>
                 </div>
@@ -478,59 +586,14 @@
             <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
         </div>
     </section>
+
     <div class="spacer"></div>
-    <section id="contact" class="contact">
-        <!-- (contact repeated section removed - original kept above) -->
-    </section>
+
     <div class="lightbox" id="lightbox" aria-hidden="true">
         <button class="lightbox-close" type="button" aria-label="Close image">&times;</button>
         <img class="lightbox-img" alt="" />
     </div>
+
     <script src="index-script.js"></script>
 </body>
 </html>
-
-<script>
-  (function () {
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = lightbox.querySelector('.lightbox-img');
-    const closeBtn = lightbox.querySelector('.lightbox-close');
-
-    function openLightbox(src, alt) {
-      lbImg.src = src;
-      lbImg.alt = alt || 'Project screenshot';
-      lightbox.classList.add('is-open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lbImg.src = '';
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('click', (e) => {
-      const img = e.target.closest('img[data-lightbox]');
-      if (img) {
-        openLightbox(img.dataset.lightbox, img.alt);
-        return;
-      }
-
-      if (lightbox.classList.contains('is-open') && e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    closeBtn.addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
-        closeLightbox();
-      }
-    });
-  })();
-</script>
-
